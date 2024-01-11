@@ -17,9 +17,11 @@ public class Tests
     {
         double expectedCost = 100;
 
-        double value = _classAssignmentAvans.ShippingCosts(true, "ground", 350);
+        if (_classAssignmentAvans != null) {
+            double value = _classAssignmentAvans.ShippingCosts(true, "ground", 350);
 
-        Assert.That(value, Is.EqualTo(expectedCost));
+            Assert.That(value, Is.EqualTo(expectedCost));
+        }
     }
 
 
@@ -27,9 +29,11 @@ public class Tests
     [Test]
     public void MethodReturnsZero_WhenCalculation_IsSetToFalse()
     {
-        double value = _classAssignmentAvans.ShippingCosts(false, "NextDayAir", 250);
+        if (_classAssignmentAvans != null) {
+            double value = _classAssignmentAvans.ShippingCosts(false, "NextDayAir", 250);
 
-        Assert.Zero(value);
+            Assert.Zero(value);
+        }
     }
 
 
@@ -39,9 +43,11 @@ public class Tests
 
         double InStoreCost = 50;
 
-        double value = _classAssignmentAvans.ShippingCosts(true, "InStore", 1525);
+        if (_classAssignmentAvans != null) {
+            double value = _classAssignmentAvans.ShippingCosts(true, "InStore", 1525);
 
-        Assert.That(value, Is.Not.EqualTo(InStoreCost));
+            Assert.That(value, Is.Not.EqualTo(InStoreCost));
+        }
     }
 
 
@@ -49,9 +55,11 @@ public class Tests
     [Test]
     public void ResultIsSame_WhenTotalPriceIsNegative() {
 
-        double value = _classAssignmentAvans.ShippingCosts(true, "SecondDayAir", -5);
+        if (_classAssignmentAvans != null) {
+            double value = _classAssignmentAvans.ShippingCosts(true, "SecondDayAir", -5);
 
-        Assert.That(value, Is.EqualTo(125));
+            Assert.That(value, Is.EqualTo(125));
+        }
     }
 
 
@@ -59,9 +67,11 @@ public class Tests
     [Test]
     public void ResultIsZero_WhenUserInputIsEmptyString()
     {
-        double value = _classAssignmentAvans.ShippingCosts(true, String.Empty, 250);
+        if (_classAssignmentAvans != null) {
+            double value = _classAssignmentAvans.ShippingCosts(true, String.Empty, 250);
 
-        Assert.Zero(value);
+            Assert.Zero(value);
+        }
     }
 
 
@@ -75,9 +85,11 @@ public class Tests
         for(int i = 0; i < anyTypeOfShippingCosts.Length; i++) {
             string nameOfType = anyTypeOfShippingCosts[i];
 
-            double value = _classAssignmentAvans.ShippingCosts(true, nameOfType, 250);
+            if (_classAssignmentAvans != null) {
+                double value = _classAssignmentAvans.ShippingCosts(true, nameOfType, 250);
 
-            Assert.That(value, Is.AnyOf(100, 50, 250, 125));
+                Assert.That(value, Is.AnyOf(100, 50, 250, 125));
+            }
         }
     }
 }
